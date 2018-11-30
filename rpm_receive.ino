@@ -12,6 +12,7 @@ Modified by Charlie Dawson to get engine RPM and wheel speed from PE3 ECU
 #include <SPI.h>
 #include "TachControl.h"
 #include "sevenSegment.h"
+#include "LEDSetup.h"
 
 long unsigned int rxId;
 
