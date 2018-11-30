@@ -3,10 +3,22 @@
 // Honda CBR600rr redline: 12800 RPM
 
 #include <FastLED.h>
+#include "math.h"
 
 #define NUM_LEDS 20 // 20 LEDs currently a part of the light strip
 #define DATA_PIN 7 // Output pin on Arduino connected to LED display
 #define REDLINE 12800
+#define BRIGHTNESS 1.0
+
+#define COLOR_SPEED 5
+
+int rWave;
+int gWave;
+int bWave;
+
+int rAddWave;
+int gAddWave;
+int bAddWave;
 
 CRGB leds[NUM_LEDS];
 
@@ -26,18 +38,18 @@ void dispRpm(int rpm) {
   for (int i = 0; i < (rpm*NUM_LEDS/REDLINE); i++) {  
     if (i < 7) {
       // Green
-      leds[i].g = 255;
+      leds[i].g = 255 * BRIGHTNESS;
     }
     
     else if (i < 12) {
       // Yellow
-      leds[i].r = 255;
-      leds[i].g = 255;
+      leds[i].r = 255 * BRIGHTNESS;
+      leds[i].g = 255 * BRIGHTNESS;
     }
     
     else {
       // Blue
-      leds[i].b = 255;
+      leds[i].b = 255 * BRIGHTNESS;
     }  
   }
 
@@ -49,4 +61,8 @@ void dispRpm(int rpm) {
   }
   
   FastLED.show();
+}
+
+void rainbowWave() {
+  
 }
