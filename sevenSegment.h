@@ -1,3 +1,4 @@
+/***Display digits on an seven-segment display***/
 /****Compatible with 74LS47 Display Contoller****/
 
 // Digital pins connected to the 74LS47 display controller
