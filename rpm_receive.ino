@@ -15,21 +15,21 @@ Modified by Charlie Dawson to get engine RPM and wheel speed from PE3 ECU
 
 long unsigned int rxId;
 
-#define RPM_ID 0x0CFFF048 // PE3 Engine RPM CAN Message ID
-#define WHEEL_SPEED_ID 0x0CFFFF48 // PE3 Wheel RPM CAN Message ID
+#define RPM_ID 0x0CFFF048           // PE3 Engine RPM CAN Message ID
+#define WHEEL_SPEED_ID 0x0CFFFF48   // PE3 Wheel RPM CAN Message ID
 
 unsigned char len = 0;
-unsigned char rxBuf[8]; // CAN message (8 bytes)
-char msgString[128];                        // Array to store serial string
+unsigned char rxBuf[8];             // CAN message (8 bytes)
+char msgString[128];                // Array to store serial string
 
-#define CAN0_INT 2                              // Set INT to pin 2
-MCP_CAN CAN0(10);                               // Set CS to pin 10
+#define CAN0_INT 2                  // Set INT to pin 2
+MCP_CAN CAN0(10);                   // Set CS to pin 10
 
 int engineRpm = 0;
 int wheelRpm = 0;
 int currentGear = 0;
 
-const double RATIO_ERROR = 0; // May needed to be used to account for small errors in gear calculations
+const double RATIO_ERROR = 0;       // May needed to be used to account for small errors in gear calculations
 
 
 struct GEAR_RATIOS {
@@ -57,9 +57,9 @@ void setup()
   else
     Serial.println("Error Initializing MCP2515...");
   
-  CAN0.setMode(MCP_NORMAL);                     // Set operation mode to normal so the MCP2515 sends acks to received data.
+  CAN0.setMode(MCP_NORMAL); // Set operation mode to normal so the MCP2515 sends acks to received data.
 
-  pinMode(CAN0_INT, INPUT);                            // Configuring pin for /INT input
+  pinMode(CAN0_INT, INPUT); // Configuring pin for /INT input
   
   Serial.println("MCP2515-PE3 Arduino Interface...");
   delay(1000);
@@ -82,8 +82,8 @@ void loop()
     }
 
     currentGear = getGear(engineRpm, wheelRpm);
-    setDisplay(currentGear);
-    dispRpm(engineRpm);
+    setDisplay(currentGear); // sevenSegment.h
+    dispRpm(engineRpm);      // TachControl.h
     
     Serial.print("Current gear is: "); Serial.println(currentGear);
     

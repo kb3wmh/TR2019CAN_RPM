@@ -42,8 +42,9 @@ void setupTach() {
   bAddWave = 0;
 }
 
+// Cycle through colors when car is off ( both to show that tach is working and for cool factor :) )
 void rainbowWave() {
-  if (millis() % 2 == 0) {
+  if (millis() % 5 == 0) { // Attempt to slow down rainbow wave--if there are problems try and get rid of this first
     for (int i = NUM_LEDS - 1; i >=1; i--) {
       leds[i].r = leds[i-1].r;
       leds[i].b = leds[i-1].b;
@@ -115,7 +116,7 @@ void dispRpm(int rpm) {
     FastLED.show();
   }
 
-  else {
+  else { // if rpm is 0 RAINBOW WAVE TIME
     rainbowWave();
   }
 }
