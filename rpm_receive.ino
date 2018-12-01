@@ -85,7 +85,7 @@ void loop()
     setDisplay(currentGear); // sevenSegment.h
     dispRpm(engineRpm);      // TachControl.h
     
-    Serial.print("Current gear is: "); Serial.println(currentGear);
+    //Serial.print("Current gear is: "); Serial.println(currentGear);
     
     
     Serial.println();

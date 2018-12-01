@@ -43,7 +43,7 @@ void setupDisplay() {
   four.pinAState = LOW;
   four.pinBState = LOW;
   four.pinCState = HIGH;
-  four.pinCState = LOW;
+  four.pinDState = LOW;
 
   five.pinAState = HIGH;
   five.pinBState = LOW;
