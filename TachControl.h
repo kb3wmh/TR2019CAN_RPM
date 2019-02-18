@@ -5,8 +5,12 @@
 #include <FastLED.h>
 #include "math.h"
 
+#define CHIPSET APA102
+#define DATA_PIN 3 // Output pin on Arduino connected to LED display
+#define CLOCK_PIN 4
 #define NUM_LEDS 15 // 20 LEDs currently a part of the light strip
-#define DATA_PIN 10 // Output pin on Arduino connected to LED display
+
+
 #define REDLINE 12800.0
 #define BRIGHTNESS_WAVE 0.25
 #define BRIGHTNESS 1.0
@@ -26,7 +30,8 @@ unsigned long time;
 CRGB leds[NUM_LEDS];
 
 void setupTach() {
-  FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
+  //FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
+  FastLED.addLeds<CHIPSET, DATA_PIN, CLOCK_PIN>(leds, NUM_LEDS);
 
   // Initialize leds to 0 (off)
   for (int i = 0; i < NUM_LEDS; i++) {
